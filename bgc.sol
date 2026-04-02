@@ -302,6 +302,7 @@ contract BGCToken is
 
     /// @dev Override _mint to enforce total supply never exceeds 10 billion
     function _mint(address account, uint256 amount) internal virtual override {
+        require(!isBlacklisted[account], "Recipient is blacklisted");
         require(totalSupply() + amount <= MAX_SUPPLY, "Exceeds max supply");
         super._mint(account, amount);
     }
