@@ -314,8 +314,11 @@ contract BGCToken is
         require(newOwner != address(0), "Invalid new owner");
         address oldOwner = owner();
         isWhitelisted[newOwner] = true;
+        emit WhitelistUpdated(newOwner, true);
         if (oldOwner != newOwner){
             isWhitelisted[oldIOwner] = false;
+            emit WhitelistUpdated(oldOwner, false);
+        }
         super.transferOwnership(newOwner);
     }
 
