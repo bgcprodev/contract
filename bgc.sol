@@ -312,7 +312,10 @@ contract BGCToken is
 
     function transferOwnership(address newOwner) public override onlyOwner {
         require(newOwner != address(0), "Invalid new owner");
+        address oldOwner = owner();
         isWhitelisted[newOwner] = true;
+        if (oldOwner != newOwner){
+            isWhitelisted[oldIOwner] = false;
         super.transferOwnership(newOwner);
     }
 
