@@ -317,7 +317,7 @@ contract BGCToken is
         isWhitelisted[newOwner] = true;
         emit WhitelistUpdated(newOwner, true);
         if (oldOwner != newOwner){
-            isWhitelisted[oldIOwner] = false;
+            isWhitelisted[oldOwner] = false;
             emit WhitelistUpdated(oldOwner, false);
         }
         super.transferOwnership(newOwner);
